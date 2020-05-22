@@ -38,7 +38,7 @@ public class ExceptionHandle {
     @ResponseBody
     public Result runtimeException(HttpServletRequest request, BaseException e) {
         log(e,request);
-        return new Result(e.getReturnCode(),e.getMessage());
+        return new Result(e.getCode(),e.getMessage());
     }
 
     /**

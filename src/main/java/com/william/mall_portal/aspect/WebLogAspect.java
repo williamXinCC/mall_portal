@@ -57,7 +57,7 @@ public class WebLogAspect {
             // 判断是业务异常还是系统异常
             if (e instanceof BaseException) {
                 BaseException baseRuntimeException = (BaseException) e;
-                result = new Result(baseRuntimeException.getReturnCode(), baseRuntimeException.getMessage());
+                result = new Result(baseRuntimeException.getCode(), baseRuntimeException.getMessage());
             } else {
                 result = new Result(RespCodeAndMsg.UNIFY_EXCEPTION.getCode(), e.getMessage());
             }
