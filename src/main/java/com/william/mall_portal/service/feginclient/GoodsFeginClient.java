@@ -39,4 +39,7 @@ public interface GoodsFeginClient {
 
     @PostMapping(value = "/goods/getHotGoodsByPage")
     List<WilliamGoods> getHotGoodsByPage(@RequestBody PageReq pageReq,@RequestParam(value = "uid",required = false) String uid);
+
+    @PostMapping(value = "/goods/getGuessYouLike")
+    List<WilliamGoods> getGuessYouLike(@RequestBody PageConditionReq pageConditionReq,@RequestParam(value = "uid",required = false) String uid);
 }

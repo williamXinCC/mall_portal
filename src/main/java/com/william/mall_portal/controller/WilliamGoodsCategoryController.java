@@ -21,6 +21,14 @@ public class WilliamGoodsCategoryController {
     @Autowired
     private WilliamGoodsCategoryServiceImpl williamGoodsCategoryService;
 
+
+    /**
+     * 分类树 无限极
+     * @author     xinchuang
+     * @param baseRequest :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
     @PostMapping(value = "/getGoodsCategoryTreeList")
     public Result getGoodsCategoryTreeList(@RequestBody BaseRequest baseRequest, @RequestParam(value = "uid",required = false)String uid){
         return williamGoodsCategoryService.getGoodsCategoryTreeList(baseRequest,uid);

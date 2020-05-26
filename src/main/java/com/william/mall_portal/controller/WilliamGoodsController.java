@@ -1,5 +1,6 @@
 package com.william.mall_portal.controller;
 
+import com.sun.xml.internal.fastinfoset.util.ValueArrayResourceException;
 import com.william.mall_portal.service.WilliamGoodsServiceImpl;
 import com.william.pojo.Result;
 import com.william.pojo.WilliamGoods;
@@ -23,6 +24,18 @@ public class WilliamGoodsController {
 
     @Autowired
     private WilliamGoodsServiceImpl goodsService;
+
+    /**
+     * 猜你喜欢
+     * @author     xinchuang
+     * @param pageConditionReq :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
+    @PostMapping(value = "/getGuessYouLike")
+    public Result getGuessYouLike(@RequestBody PageConditionReq pageConditionReq, @RequestHeader(value = "uid",required = false)String uid){
+        return goodsService.getGuessYouLike(pageConditionReq,uid);
+    }
 
     /**
      * 热门商品

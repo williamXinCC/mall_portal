@@ -117,4 +117,16 @@ public class WilliamGoodsServiceImpl {
         List<WilliamGoods> williamGoodsList = goodsFeginClient.getHotGoodsByPage(pageReq,uid);
         return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS,williamGoodsList);
     }
+
+    /**
+     * 猜你喜欢
+     * @author     xinchuang
+     * @param pageConditionReq :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
+    public Result getGuessYouLike(PageConditionReq pageConditionReq, String uid) {
+        List<WilliamGoods> guessGoods = goodsFeginClient.getGuessYouLike(pageConditionReq,uid);
+        return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS,guessGoods);
+    }
 }
