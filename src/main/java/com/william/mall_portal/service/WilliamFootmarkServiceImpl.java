@@ -6,6 +6,7 @@ import com.william.pojo.Result;
 import com.william.pojo.WilliamBrowsingHistory;
 import com.william.pojo.req.PageConditionReq;
 import com.william.pojo.req.PageReq;
+import com.william.pojo.req.PublicReq;
 import com.william.pojo.resp.BrowsingHisResp;
 import com.william.pojo.resp.FootmarkResp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,10 @@ public class WilliamFootmarkServiceImpl {
     public Result getFootmarkByUid(PageReq pageReq, String uid) {
         List<FootmarkResp> footmarkRespList =  footmarkFeginClient.getFootmarkByUid(pageReq,uid);
         return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS,footmarkRespList);
+    }
+
+    public Result deleteFootmarkById(PublicReq publicReq, String uid) {
+        footmarkFeginClient.deleteFootmarkById(publicReq,uid);
+        return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS);
     }
 }

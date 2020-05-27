@@ -35,4 +35,8 @@ public interface OrderFeginClient {
     // 订单详情
     @PostMapping(value = "/order/getOrderDetail")
     OrderDetailResp getOrderDetail(@RequestBody PublicReq publicReq,@RequestParam("uid") String uid);
+
+    // 删除订单
+    @PostMapping(value = "/order/deleteOrder")
+    void deleteOrder(@RequestBody PublicReq publicReq,@RequestParam("uid") String uid);
 }

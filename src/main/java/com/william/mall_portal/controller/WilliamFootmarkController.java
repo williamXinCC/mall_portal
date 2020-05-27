@@ -22,6 +22,18 @@ public class WilliamFootmarkController {
     private WilliamFootmarkServiceImpl williamFootmarkService;
 
     /**
+     * 删除浏览记录
+     * @author     xinchuang
+     * @param publicReq :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
+    @PostMapping(value = "/deleteFootmarkById")
+    public Result deleteFootmarkById(@RequestBody PublicReq publicReq,@RequestHeader("uid")String uid){
+        return williamFootmarkService.deleteFootmarkById(publicReq,uid);
+    }
+
+    /**
      * 保存浏览记录
      * @author     xinchuang
      * @param publicReq :
@@ -33,13 +45,20 @@ public class WilliamFootmarkController {
         return williamFootmarkService.saveFootmarkByUidAndGoodsId(publicReq.getKeyName(),uid);
     }
 
+    /**
+     * 我的足迹列表
+     * @author     xinchuang
+     * @param pageReq :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
     @PostMapping(value = "/getFootmarkByUid")
     public Result getFootmarkByUid(@RequestBody PageReq pageReq,@RequestHeader(value = "uid")String uid){
         return williamFootmarkService.getFootmarkByUid(pageReq,uid);
     }
 
     /**
-     * 足迹
+     * 日期获取 足迹
      * @author     xinchuang
      * @param pageConditionReq : keyName 为日期时间
      * @param uid :

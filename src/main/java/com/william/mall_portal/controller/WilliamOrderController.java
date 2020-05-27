@@ -1,5 +1,6 @@
 package com.william.mall_portal.controller;
 
+import com.william.constant.RespCodeAndMsg;
 import com.william.mall_portal.service.WilliamOrderServiceImpl;
 import com.william.pojo.Result;
 import com.william.pojo.WilliamOrder;
@@ -23,6 +24,19 @@ public class WilliamOrderController {
 
     @Autowired
     private WilliamOrderServiceImpl williamOrderService;
+
+    /**
+     * 删除订单
+     * @author     xinchuang
+     * @param publicReq :
+     * @param uid :
+     * @return : void
+     */
+    @DeleteMapping(value = "/deleteOrder")
+    public Result deleteOrder(@RequestBody PublicReq publicReq,@RequestParam("uid")String uid){
+        williamOrderService.deleteOrder(publicReq,uid);
+        return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS);
+    }
 
     /**
      * 查订单详情

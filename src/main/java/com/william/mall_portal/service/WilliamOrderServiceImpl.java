@@ -48,4 +48,15 @@ public class WilliamOrderServiceImpl {
         OrderDetailResp orderDetailResp = orderFeginClient.getOrderDetail(publicReq,uid);
         return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS,orderDetailResp);
     }
+
+    /**
+     * 删除订单
+     * @author     xinchuang
+     * @param publicReq :
+     * @param uid :
+     * @return : void
+     */
+    public void deleteOrder(PublicReq publicReq, String uid) {
+        orderFeginClient.deleteOrder(publicReq,uid);
+    }
 }

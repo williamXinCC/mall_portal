@@ -2,6 +2,7 @@ package com.william.mall_portal.service.feginclient;
 
 import com.william.pojo.req.PageConditionReq;
 import com.william.pojo.req.PageReq;
+import com.william.pojo.req.PublicReq;
 import com.william.pojo.resp.BrowsingHisResp;
 import com.william.pojo.resp.FootmarkResp;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -28,4 +29,7 @@ public interface FootmarkFeginClient {
 
     @PostMapping(value = "/footmark/getFootmarkByUid")
     List<FootmarkResp> getFootmarkByUid(@RequestBody PageReq pageReq,@RequestParam("uid") String uid);
+
+    @PostMapping(value = "/footmark/deleteFootmarkById")
+    void deleteFootmarkById(@RequestBody PublicReq publicReq, @RequestParam("uid") String uid);
 }
