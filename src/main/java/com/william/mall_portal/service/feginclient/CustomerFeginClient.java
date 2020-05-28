@@ -4,6 +4,7 @@ import com.william.pojo.Result;
 import com.william.pojo.WilliamCustomer;
 import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.UpdateCustomerReq;
+import com.william.pojo.req.UpdatePassword;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,4 +24,7 @@ public interface CustomerFeginClient {
 
     @PostMapping(value = "/customer/updateCustomerInfo")
     Result updateCustomerInfo(@RequestBody UpdateCustomerReq updateCustomerReq,@RequestParam("uid") String uid);
+
+    @PostMapping(value = "/customer/updatePassword")
+    void updatePassword(@RequestBody UpdatePassword updatePassword,@RequestParam("uid") String uid);
 }

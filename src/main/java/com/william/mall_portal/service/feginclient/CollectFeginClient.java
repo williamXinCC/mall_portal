@@ -1,10 +1,15 @@
 package com.william.mall_portal.service.feginclient;
 
+import com.william.pojo.WilliamGoods;
+import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.CollectReq;
+import com.william.pojo.req.PageConditionReq;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author xinchuang
@@ -23,4 +28,7 @@ public interface CollectFeginClient {
 
     @PostMapping(value = "/collect/getAlreadyCollect")
     Integer getAlreadyCollect(@RequestBody CollectReq collectReq,@RequestParam("uid") String uid);
+
+    @PostMapping(value = "/collect/getMyCollect")
+    List<WilliamGoods> getMyCollect(@RequestBody PageConditionReq pageConditionReq, @RequestParam("uid") String uid);
 }

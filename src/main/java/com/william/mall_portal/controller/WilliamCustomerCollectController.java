@@ -4,7 +4,9 @@ package com.william.mall_portal.controller;
 import com.william.constant.RespCodeAndMsg;
 import com.william.mall_portal.service.WilliamCustomerCollectServiceImpl;
 import com.william.pojo.Result;
+import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.CollectReq;
+import com.william.pojo.req.PageConditionReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,19 @@ public class WilliamCustomerCollectController {
 
     @Autowired
     private WilliamCustomerCollectServiceImpl williamCustomerCollectServiceImpl;
+
+    /**
+     * 我的收藏
+     * @author     xinchuang
+     * @param pageConditionReq :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
+    @PostMapping(value = "/getMyCollect")
+    public Result getMyCollect(@RequestBody PageConditionReq pageConditionReq, @RequestHeader(value = "uid")String uid){
+        return williamCustomerCollectServiceImpl.getMyCollect(pageConditionReq,uid);
+    }
+
 
     /**
      * 收藏

@@ -1,5 +1,6 @@
 package com.william.mall_portal.service.feginclient;
 
+import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.LoginByCaptchaOrPassword;
 import com.william.pojo.resp.LoginResp;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -21,4 +22,7 @@ public interface LoginFeginClient {
 
     @PostMapping(value = "/login/getLoginByPhoneAndPassword")
     LoginResp getLoginByPhoneAndPassword(@RequestBody LoginByCaptchaOrPassword loginByCaptchaOrPassword);
+
+    @PostMapping(value = "/login/loginByToken")
+    LoginResp loginByToken(@RequestBody BaseRequest baseRequest,@RequestParam("token") String token);
 }

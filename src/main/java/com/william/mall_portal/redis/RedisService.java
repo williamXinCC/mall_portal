@@ -32,14 +32,14 @@ public class RedisService {
     ValueOperations<Object, Object> valOpsObj;
 
     /**
-     * 设置Key的失效时间毫秒
+     * 设置Key的失效时间 秒
      * @author     xinchuang
      * @param
      * @return
      * @exception
      */
-    public boolean setExpire(String key,long time){
-       return  stringRedisTemplate.expire(key,time,TimeUnit.SECONDS);
+    public void setExpire(String key,String value,long time){
+       valOpsStr.set(key, value, time, TimeUnit.SECONDS);
     }
 
     /**

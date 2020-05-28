@@ -4,6 +4,7 @@ import com.william.mall_portal.service.WilliamCustomerServiceImpl;
 import com.william.pojo.Result;
 import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.UpdateCustomerReq;
+import com.william.pojo.req.UpdatePassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,19 @@ public class WilliamCustomerController {
 
     @Autowired
     private WilliamCustomerServiceImpl williamCustomerServiceImpl;
+
+    /**
+     * 重置密码
+     * @author     xinchuang
+     * @param updatePassword :
+     * @param uid :
+     * @return : com.william.pojo.Result
+     */
+    @PostMapping(value = "/updatePassword")
+    public Result updatePassword(@RequestBody UpdatePassword updatePassword, @RequestHeader("uid")String uid){
+        return williamCustomerServiceImpl.updatePassword(updatePassword,uid);
+    }
+
 
     /**
      * 修改个人信息

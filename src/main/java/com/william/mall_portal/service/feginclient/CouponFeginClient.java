@@ -1,7 +1,10 @@
 package com.william.mall_portal.service.feginclient;
 
+import com.william.pojo.WilliamCoupon;
+import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.PageConditionReq;
-import com.william.pojo.resp.CustomerCouponListResp;
+import com.william.pojo.req.PublicReq;
+import com.william.pojo.resp.CustomerCouponResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,5 +22,17 @@ import java.util.List;
 public interface CouponFeginClient {
 
     @PostMapping(value = "/coupon/getCouponByType")
-    List<CustomerCouponListResp> getCouponByType(@RequestBody PageConditionReq pageConditionReq,@RequestParam("uid") String uid);
+    List<CustomerCouponResp> getCouponByType(@RequestBody PageConditionReq pageConditionReq, @RequestParam("uid") String uid);
+
+    @PostMapping(value = "/coupon/deleteExpireCoupon")
+    void deleteExpireCoupon(@RequestBody BaseRequest baseRequest, @RequestParam("uid") String uid);
+
+    @PostMapping(value = "/coupon/saveCoupon")
+    Integer saveCoupon(@RequestBody PublicReq publicReq, @RequestParam("uid") String uid);
+
+    @PostMapping(value = "/coupon/getCouponCenter")
+    List<WilliamCoupon> getCouponCenter(@RequestBody BaseRequest baseRequest, @RequestParam("uid") String uid);
+
+    @PostMapping(value = "/coupon/getCouponDetail")
+    CustomerCouponResp getCouponDetail(@RequestBody PublicReq publicReq, @RequestParam("uid") String uid);
 }

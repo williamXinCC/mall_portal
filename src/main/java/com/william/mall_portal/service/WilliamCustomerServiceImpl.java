@@ -1,13 +1,17 @@
 package com.william.mall_portal.service;
 
 import com.william.constant.RespCodeAndMsg;
+import com.william.mall_portal.redis.RedisService;
 import com.william.mall_portal.service.feginclient.CustomerFeginClient;
 import com.william.pojo.Result;
 import com.william.pojo.WilliamCustomer;
 import com.william.pojo.req.BaseRequest;
 import com.william.pojo.req.UpdateCustomerReq;
+import com.william.pojo.req.UpdatePassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 /**
  * @author xinchuang
@@ -20,6 +24,9 @@ public class WilliamCustomerServiceImpl {
 
     @Autowired
     private CustomerFeginClient customerFeginClient;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 客户详情
@@ -42,5 +49,14 @@ public class WilliamCustomerServiceImpl {
      */
     public Result updateCustomerInfo(UpdateCustomerReq updateCustomerReq, String uid) {
        return customerFeginClient.updateCustomerInfo(updateCustomerReq,uid);
+    }
+
+    public Result updatePassword(UpdatePassword updatePassword, String uid) {
+        String captch = redisService.getStr(updatePassword.getPhone().concat("captch"));
+        if(Objects.equals(captch,updatePassword.getCaptch())){
+            customerFeginClient.updatePassword(updatePassword,uid);
+            return Result.getResult(RespCodeAndMsg.OPERATE_SUCCESS);
+        }
+        return Result.getResult(RespCodeAndMsg.UPDATE_PASSWORD_FAILED);
     }
 }
